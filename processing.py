@@ -52,7 +52,37 @@ testLen = len(y_test)
 
 evaluationLen = len(x_eval)
 
-    
+
+def print_images(image_list):
+    n = int(len(image_list) / len(uniq_labels))
+    cols = 8
+    rows = 4
+    fig = plt.figure(figsize = (24, 12))
+
+    for i in range(len(uniq_labels)):
+        ax = plt.subplot(rows, cols, i + 1)
+        plt.imshow(image_list[int(n*i)])
+        plt.title(uniq_labels[i])
+        ax.title.set_fontsize(20)
+        ax.axis('off')
+    plt.show()
+
+y_train_in = y_train.argsort()
+y_train = y_train[y_train_in]
+X_train = X_train[y_train_in]
+
+print("Training Images: ")
+print_images(image_list = X_train)
+
+y_test_in = y_test.argsort()
+y_test = y_test[y_test_in]
+X_test = X_test[y_test_in]
+
+print("Testing images: ")
+print_images(image_list = X_test)
+
+print("Evaluation images: ")
+print_images(image_list = X_eval)
     
     
 print("Preprocessing...")
