@@ -1,9 +1,12 @@
 import numpy as np
+np.random.seed(40535)
+import tensorflow
+tensorflow.set_random_seed(10)
+import matplotlib.pyplot as plt
 import os
 import cv2
-import argparse
-import random
 import keras
+from sklearn.model_selection import train_test_split
 
 # Pieces of this code were borrowed from multiple different applications of this data
 # Help with loading the data: https://www.kaggle.com/gargimaheshwari/asl-recognition-with-deep-learning
@@ -39,8 +42,16 @@ images, labels = load_images(directory = train, size = img_size)
 if labels_set == sorted(os.listdir(evaluation)):
     x_eval, y_eval = load_images(directory = evaluation, size = img_size)
 
-    
-    
+# Here we are going to use scikit to split our training data into two separate pieces, training and testing (note testing is separate from evaluation)
+x_train, x_test, y_train, y_test = train_test_split(images, labels, test_size=0.1, stratify=labels)
+
+length = len(labels_set)
+
+trainLen = len(x_train)
+testLen = len(y_test)
+
+evaluationLen = len(x_eval)
+
     
     
     
