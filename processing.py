@@ -2,18 +2,49 @@ import numpy as np
 import os
 import cv2
 import argparse
-from tqdm import tqdm
 import random
+import keras
 
+# Pieces of this code were borrowed from multiple different applications of this data
+# Help with loading the data: https://www.kaggle.com/gargimaheshwari/asl-recognition-with-deep-learning
+# Preprocessing ideas came from the above source in addition to: https://debuggercafe.com/american-sign-language-detection-using-deep-learning/
 
+train = '../asl_alphabet-train/asl-alphabet-train'
+evaluation = '../asl-alphabet-test/asl-alphabet-test'
+img_size = 64
 
-print(f"Preprocessing {1200} ...")
+# directory should be the path to the folder with the images, use the predefined variables 'train' and 'evaluation'
+# The size is for resizing the images.  All images are squares.  The reason we decided to implement this size variable is because
+# we found multiple different proposed solutions using image sizes ranging from 64 to 580, with such a large range we wanted room to 
+# adjust later in the process.
+def load_images(directory, size):
+    print("loading images")
+    
+    images = []
+    labels = []
 
-paths = os.listdir('../main/asl_alphabet_train/asl_alphabet_train')
-paths.sort()
-root = '../main/asl_alphabet_train/asl_alphabet_train'
+    for i, label in enumerate(labels_set):
+        for file in os.listdir(directory + "/" + label):
+            filepath = directory + "/" + label + "/" + file
+            img = cv2.resize(cv2.read(filepath), (size, size))
+            images.append(img)
+            labels.append(i)
+    images = np.array(images)
+    labels = np.array(labels)
+    return (images, labels)
 
+labels_set = sorted(os.listdir(train))
+images, labels = load_images(directory = train, size = img_size)
 
+if labels_set == sorted(os.listdir(evaluation)):
+    x_eval, y_eval = load_images(directory = evaluation, size = img_size)
+
+    
+    
+    
+    
+    
+print("Preprocessing...")
 
 for j, dir_path  in tqdm(enumerate(paths), total=len(paths)):
     all_pics = os.listdir(f"{root}/{dir_path}")
