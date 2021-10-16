@@ -16,3 +16,8 @@ After looking at several images we believe key features we should focus on ident
 Another idea is that your fingers will form straight lines when two or more fingers are aligned next to eachother.  We may be able to create a filter which identifies straight lines well.  
 
 Our last piece of information we noticed is the importance of the thumb in ASL.  We believe it will help greatly if we can identify the position of the thumb.  We have noticed the finger nail of the thumb is generally perpendicular to the rest of your finger nails.  We are not sure of any strategies to help identify this feature, but if there are any, we believe it might be important.
+
+**Image Loading**
+We did not do any manual data collection. Each image comes from our datasource as 200x200. This is already a pretty good resolution for our future work, however, we did implement in our image reader a way to resize the images again. The reason we chose to implement this functionality is incase we attempt to implement some sort of a Convoluntional Neural Network as they do not need images with such high resolution and it will likely show diminishing returns above 64x64.
+
+**PreProcessing**
