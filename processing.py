@@ -53,6 +53,7 @@ testLen = len(y_test)
 evaluationLen = len(x_eval)
 
 
+# This printing images code is borrowed from: https://www.kaggle.com/gargimaheshwari/asl-recognition-with-deep-learning
 def print_images(image_list):
     n = int(len(image_list) / len(uniq_labels))
     cols = 8
@@ -69,30 +70,31 @@ def print_images(image_list):
 
 y_train_in = y_train.argsort()
 y_train = y_train[y_train_in]
-X_train = X_train[y_train_in]
+x_train = x_train[y_train_in]
 
 print("Training Images: ")
-print_images(image_list = X_train)
+print_images(image_list = x_train)
 
 y_test_in = y_test.argsort()
 y_test = y_test[y_test_in]
-X_test = X_test[y_test_in]
+x_test = x_test[y_test_in]
 
 print("Testing images: ")
-print_images(image_list = X_test)
+print_images(image_list = x_test)
 
 print("Evaluation images: ")
-print_images(image_list = X_eval)
-    
+print_images(image_list = x_eval)
     
 print("Preprocessing...")
 
-for j, dir_path  in tqdm(enumerate(paths), total=len(paths)):
-    all_pics = os.listdir(f"{root}/{dir_path}")
-    os.makedirs(f"../main/preprocessed_image/{dir_path}", exist_ok=True)
-    for i in range(1200): 
-        id = (random.randint(0, 2999))
-        pic = cv2.imread(f"{root}/{dir_path}/{all_pics[id]}")
-        pic = cv2.resize(pic, (224, 224))
-        cv2.imwrite(f"../main/preprocessed_image/{dir_path}/{dir_path}{i}.jpg", pic)
+# One hot encoding
+y_train = keras.utils.to_categorical(y_train)
+y_test = keras.utils.to_categorical(y_test)
+y_eval = keras.utils.to_categorical(y_eval)
+
+#normalize RGB
+x_train = x_train.astype('float32')/255.0
+x_test = x_test.astype('float32')/255.0
+x_eval = x_eval.astype('float32')/255.0
+
 print('preprocessing complete.')
