@@ -1,7 +1,7 @@
 import numpy as np
-np.random.seed(40535)
-import tensorflow
-tensorflow.set_random_seed(10)
+np.random.seed(5) 
+import tensorflow as tf
+tf.random.set_seed(2)
 import matplotlib.pyplot as plt
 import os
 import cv2
@@ -12,8 +12,9 @@ from sklearn.model_selection import train_test_split
 # Help with loading the data: https://www.kaggle.com/gargimaheshwari/asl-recognition-with-deep-learning
 # Preprocessing ideas came from the above source in addition to: https://debuggercafe.com/american-sign-language-detection-using-deep-learning/
 
-train = '../asl_alphabet-train/asl-alphabet-train'
-evaluation = '../asl-alphabet-test/asl-alphabet-test'
+train = '../input/asl_alphabet_train/asl_alphabet_train'
+evaluation = '../input/asl_alphabet_test/asl_alphabet_test'
+
 img_size = 64
 
 # directory should be the path to the folder with the images, use the predefined variables 'train' and 'evaluation'
@@ -29,7 +30,7 @@ def load_images(directory, size):
     for i, label in enumerate(labels_set):
         for file in os.listdir(directory + "/" + label):
             filepath = directory + "/" + label + "/" + file
-            img = cv2.resize(cv2.read(filepath), (size, size))
+            img = cv2.resize(cv2.imread(filepath), (size, size))
             images.append(img)
             labels.append(i)
     images = np.array(images)
