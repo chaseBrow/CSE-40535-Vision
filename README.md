@@ -95,6 +95,8 @@ Evaluation loss =  0.079331
 **Next Steps**
 After speaking with several of our peers about their implementation of CNNs for their projects we were shocked with how accurate ours was. From our project we had the impression CNNs were extremely capable and unbeatable. With achieving classification accuracies of over 99% we did not think there was room for improvement in our model. We have come to the understanding it is not completely due to the power of CNNs though, it is partly to thank for our dataset. Our dataset is quite large and contains plenty of data for training and testing. However, ASL Characters are much more precise than a written character, because of this there is little variation in the images apart from the lighting of the images. People learn to trace certain characters in unique ways which makes written character classification a slightly harder challenge. However, ASL is standardized and confined to the movements of a hand which are limited compared to that of a pen on paper. We would propose to better validate our model we should attempt to evaluate it on a larger dataset of our hands (because neither of us know how to sign ASL and we will likely have small errors in our character formation) to provide it with a more varried evaluation set. We would also be interested to see if it can detect 3-4 character words from video or if this will simply identify hundreds of different characters during the transition from word to another.
 
+**To see the final working code please use the google colab link above**
+
 **Crystal Colon - Implemented the texture based feature extraction and tested the Linear and RBF SVM Classifiers**
 **Chase Brown - Implemented the CNN and tested different constructions of our CNN model**
 
