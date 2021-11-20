@@ -31,6 +31,7 @@ The matrix looks for pairs of adjacent pixel values that occur in the picture an
 
 This method was tested with two different types of kernels: linear and rbf.
 Linear worked pretty well. However, the first image that this algorithm was tested on was immediately wrong, but not by a lot. For example, the “A” letter in sign language was wrongfully interpreted as an “S” (image result included below). Upon comparing the two letters, I realized that the shape of the hand was very similar, so it is reasonable that this misclassification occured.  
+![alt text](https://github.com/chaseBrow/CSE-40535-Vision/blob/main/example_image.jpg?raw=true)  
 
 I also got a similar result with rbf (one image mispredicted but not in the same way).We did not test with poly because linear (the most simple kernel) already gave decent results. Also, this program takes a long time to run with the size of the dataset. Ultimately, we did not decide to go with the texture-based feature extraction method because it was less accurate and did not render as fast results. With a CNN, we don’t need to manually extract features from an image. The network automatically extracts features and learns their importance on the output by applying weights to its connections. CNNs are both feature extractors and classifiers. Because using a CNN allows you to accomplish more with less and yields a more accurate result (>97%), we used this method. 
-![alt text](https://github.com/chaseBrow/CSE-40535-Vision/blob/main/example_image.jpg?raw=true)
+
