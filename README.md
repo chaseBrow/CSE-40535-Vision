@@ -38,3 +38,4 @@ I found similar result with rbf (one image mispredicted but not in the same way)
 **The CNN Approach**
   With a CNN, we don’t need to manually extract features from an image. The network automatically extracts features and learns their importance on the output by applying weights to its connections. CNNs are both feature extractors and classifiers. Because using a CNN allows you to accomplish more with less and yields a more accurate result (>97%), we used this method. 
 
+![alt text](https://github.com/chaseBrow/CSE-40535-Vision/blob/main/asl_predictor.h5.png?raw=true)
