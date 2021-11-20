@@ -81,6 +81,7 @@ Non-trainable params: 512
 The sequence of CONV2D and MaxPooling layers is simply the creation and connection of convolutional kernels. We found the final couples of layers to be more impactful in the accuracy of the model. First the batch_normalization layer, this layer is interesting as it behaves differently during training VS inference. The key idea is that it maintains the mean output close to 0 while standard deviation close to 1. During training it normalizes using the mean and stdev of the current inputs while in inference it uses a moving average of the mean and stdev of the training batch. This normalization stabalized our learning significantly and reduced the number of training epochs required from 15 down to 5.  
 We used a dropout layer to randomly assign 0 values to certain inputs in order to prevent overfitting.  (NOTE: no data will be dropped during inference)  
 Finally in the final 2 dense layers where all of the input data is fed into each of the hidden neurons. We found these layers to be the two most common layers in all of the examples and papers we read. We say fluctuation in the amount of CONV2D and MaxPooling layers, but, this combination of dense layers was extremely prevelant.  
+(NOTE: we have included a saved copy of our model as 'asl_predictor.h5')
 
 **TRAINING**  
 Epoch 10/10  
@@ -93,6 +94,9 @@ Evaluation loss =  0.079331
 
 **Next Steps**
 After speaking with several of our peers about their implementation of CNNs for their projects we were shocked with how accurate ours was. From our project we had the impression CNNs were extremely capable and unbeatable. With achieving classification accuracies of over 99% we did not think there was room for improvement in our model. We have come to the understanding it is not completely due to the power of CNNs though, it is partly to thank for our dataset. Our dataset is quite large and contains plenty of data for training and testing. However, ASL Characters are much more precise than a written character, because of this there is little variation in the images apart from the lighting of the images. People learn to trace certain characters in unique ways which makes written character classification a slightly harder challenge. However, ASL is standardized and confined to the movements of a hand which are limited compared to that of a pen on paper. We would propose to better validate our model we should attempt to evaluate it on a larger dataset of our hands (because neither of us know how to sign ASL and we will likely have small errors in our character formation) to provide it with a more varried evaluation set. We would also be interested to see if it can detect 3-4 character words from video or if this will simply identify hundreds of different characters during the transition from word to another.
+
+**Crystal Colon - Implemented the texture based feature extraction and tested the Linear and RBF SVM Classifiers**
+**Chase Brown - Implemented the CNN and tested different constructions of our CNN model**
 
 Citations:  
 https://www.irjet.net/archives/V7/i11/IRJET-V7I1155.pdf  
